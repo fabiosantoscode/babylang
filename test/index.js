@@ -30,11 +30,22 @@ describe('babylang', () => {
   })
   it('can do if', () => {
     assert.deepEqual(
-      babylang.parse('if foo {\n foo() \n}'),
+      babylang.parse('if foo {\n foo \n}'),
       'if(foo){foo()}'
     )
   })
   it.skip('disallows nested functions', () => {
     assert.throws(() => { babylang.parse('foo bar baz') }, /Do not write/)
+  })
+  it('can do multiline programs', () => {
+    assert.deepEqual(babylang.parse(`
+        console.log 42, 123
+
+        if 1 + 3 {
+            console.log 1 + 3
+        }
+      `),
+      'console.log(42,123)if(1+3){console.log(1+3)}'
+    )
   })
 })

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A programming language to help children and adults alike learn to code. Compiles to javascript.",
   "main": "lib/index.js",
+  "bin": {
+    "babylang": "bin/cli.js"
+  },
   "directories": {
     "test": "test"
   },
@@ -42,5 +45,9 @@
     "hooks": {
       "pre-commit": "npm run lint --silent && npm run test --silent"
     }
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "with-temp-file": "^1.0.6"
   }
 }
