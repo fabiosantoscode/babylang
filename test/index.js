@@ -48,4 +48,9 @@ describe('babylang', () => {
       'console.log(42,123)if(1+3){console.log(1+3)}'
     )
   })
+  it('breaks with unknown characters', () => {
+    assert.throws(() => {
+      babylang.parse('foo =>')
+    }, /^Error: Unknown character ">"$/)
+  })
 })
